@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+FirstName: <input type="text" id="fName">
+LastName: <input type="text" id="lName">
+EmailAddress: <input type="email" id="email">
+PhoneNumber: <input type="number" id="pNumber">
+<input type="submit" value="submit" onclick="post()">
+
+<script>
+function post() {
+	var x = {
+		firstname: document.getElementById("fName").value,
+		lastname: document.getElementById("lName").value,
+		Email: document.getElementById("email").value,
+		Phone: document.getElementById("pNumber").value
+	}
+	console.log(x);
+	var stringify = JSON.stringify(x);
+	console.log(stringify);
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function (stringify) {
+		if (this.readyState == 4 && this.status == 200) {
+			console.log("Sent " + stringify);
+			console.log(xhttp.response);
+		}
+	};
+	xhttp.open("POST", "API ADDRESS GOES HERE", true);
+	xhttp.setRequestHeader("Content-type", "application/json");
+	xhttp.send(stringify);
+	
+
+}
+
+</script>
+
+</head>
+<body>
+
+
+</body>
+</html>
+
